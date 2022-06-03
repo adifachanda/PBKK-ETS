@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreign('booking_id')->references('booking_id')->on('bookings');
-            $table->string('customer_id')->primary();
+            $table->foreignId('booking_id');
+            $table->foreign('booking_id')->references('id')->on('bookings');
+            $table->string('customer_id');
             $table->string('payment_type');
             $table->string('first_name');
             $table->timestamps();

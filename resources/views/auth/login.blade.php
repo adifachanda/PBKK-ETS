@@ -44,7 +44,7 @@
                                     </div> --}}
 
                                     <div class="form-group">
-                                        <input id="email" type="email" name="emai" required
+                                        <input id="email" type="email" name="email" required
                                             class="input-material">
                                         <label for="email" class="label-material">Email</label>
                                     </div>

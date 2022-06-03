@@ -33,8 +33,8 @@
                                     </div> --}}
                                     
                                     <div class="form-group">
-                                        <input id="name"  type="email" name="email" required class="input-material">
-                                        <label for="name"  class="label-material">your first name</label>
+                                        <input id="name"  type="name" name="name" required class="input-material">
+                                        <label for="name"  class="label-material">Your Full Name</label>
                                     </div>
 
                                     
@@ -45,6 +45,10 @@
                                         <x-input id="email" class="block mt-1 w-full" type="email" name="email"
                                             :value="old('email')" required />
                                     </div> --}}
+                                    <div class="form-group">
+                                        <input id="phone" type="phone" name="phone" required class="input-material">
+                                        <label for="phone" class="label-material">Phone Number</label>
+                                    </div>
 
                                     <div class="form-group">
                                         <input id="email" type="email" name="email"  required class="input-material">
@@ -73,6 +77,8 @@
                                         <input id="password_confirmation" type="password" name="password_confirmation" required class="input-material">
                                         <label for="password_confirmation" class="label-material">Retype Password</label>
                                     </div>
+
+                                    
 
                                     {{-- <div class="flex items-center justify-end mt-4">
                                         <a class="underline text-sm text-gray-600 hover:text-gray-900"

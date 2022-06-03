@@ -14,10 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bookings', function (Blueprint $table) {
-            $table->id('booking_id');
-            $table->foreign('room_id')->references('room_id')->on('rooms');
-            $table->foreign('user_id')->references('user_id')->on('users');
-            $table->timestamps('booking_date');
+            $table->id('id');
+            $table->foreignId('user_id');
+            $table->foreignId('room_id');
+            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
             $table->string('booking_status')->default('payment_pending');
             $table->date('check_in');
             $table->date('check_out');

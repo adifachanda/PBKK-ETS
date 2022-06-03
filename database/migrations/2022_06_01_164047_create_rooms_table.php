@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rooms', function (Blueprint $table) {
-            $table->id('room_id');
-            $table->foreign('room_type')->references('room_type')->on('room_types');
+            $table->id();
+            $table->foreignId('room_type_id');
+            $table->foreign('room_type_id')->references('id')->on('room_types');
         });
     }
 

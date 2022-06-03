@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('room_types', function (Blueprint $table) {
-            $table->string('room_type')->primary();
+            $table->id();
             $table->string('room_name',500);
             $table->unsignedDecimal('price', 10, 2);
         });
