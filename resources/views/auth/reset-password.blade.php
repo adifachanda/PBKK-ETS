@@ -1,59 +1,48 @@
-@extends('sections.page')
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
 
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-@section('content')
-    <div class="breadcrumb-holder container-fluid">
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item">Ganti Password</li>
-        </ul>
-    </div>
-    @include('components.flash-status')
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-                    <section id="reset-password">
-                        <div class="card-body">
-                            <form id="form-reset-password" method="POST"
-                                  action="{{route('auth.change-password')}}">
-                                @csrf
+        <form method="POST" action="{{ route('password.update') }}">
+            @csrf
 
-                                @if(Auth::user()->roleUser->id_unique == 'a01')
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <select id="username" class="form-control" name="username">
-                                        @foreach($users as $user)
-                                            <option
-                                                value="{{$user->username}}">{{$user->first_name}} {{$user->last_name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                @else
-                                    <input type="hidden" name="username" value="{{ Auth::user()->username }}" />
-                                @endif
+            <!-- Password Reset Token -->
+            <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-                                <div class="form-group">
-                                    <label for="oldPassword">Password Lama</label>
-                                    <input type="password" class="form-control" name="oldPassword"
-                                           id="oldPassword"
-                                           placeholder="Password Lama">
-                                </div>
-                                <div class="form-group">
-                                    <label for="newPassword">Password Baru</label>
-                                    <input type="password" class="form-control" name="newPassword"
-                                           id="newPassword"
-                                           placeholder="Password Baru">
-                                </div>
-                                <hr>
-                                <button class="btn btn-sm btn-primary" id="btn_ganti_pass" type="submit">Simpan
-                                    Perubahan
-                                </button>
-                            </form>
-                        </div>
-                    </section>
-                </div>
+            <!-- Email Address -->
+            <div>
+                <x-label for="email" :value="__('Email')" />
+
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
             </div>
-        </div>
-    </div>
-@endsection
+
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
+
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                <x-input id="password_confirmation" class="block mt-1 w-full"
+                                    type="password"
+                                    name="password_confirmation" required />
+            </div>
+
+            <div class="flex items-center justify-end mt-4">
+                <x-button>
+                    {{ __('Reset Password') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>

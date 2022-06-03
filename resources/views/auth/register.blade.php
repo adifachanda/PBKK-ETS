@@ -1,124 +1,59 @@
-<!DOCTYPE html>
-<html lang="id">
+<x-guest-layout>
+    <x-auth-card>
+        <x-slot name="logo">
+            <a href="/">
+                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            </a>
+        </x-slot>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>HotelTrip</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="robots" content="all,follow">
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-    <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="/css/fontastic.css">
+            <!-- Name -->
+            <div>
+                <x-label for="name" :value="__('Name')" />
 
-    <!-- Google fonts - Poppins -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
-
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="/css/style.default.css" id="theme-stylesheet">
-
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="/css/custom.css">
-
-    <!-- Favicon-->
-    <!-- <link rel="shortcut icon" href="/img/favicon.ico"> -->
-    <link rel="shortcut icon" href="<?php echo url('/img/hoteltrip.png'); ?>">
-
-    <!-- Tweaks for older IEs-->
-    <!--[if lt IE 9]>
- <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
- <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-</head>
-
-<body>
-<div class="page regist-page">
-
-<div class="container d-flex align-items-center">
-    <div class="form-holder has-shadow">
-        <div class="row">
-
-            <!-- Logo & Information Panel-->
-            <div class="col-lg-6">
-                <div class="info d-flex align-items-center">
-                    <div class="content">
-                        <div class="logo text-center">
-                            <img class="img-fluid" style="width: calc(100% - 40%); height: 50%"
-                                src="/img/hoteltrip.png">
-                            <h1 style="margin-top: 10px;">  Hotel Trip </h1>
-                        </div>
-                    </div>
-                </div>
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
-            <!-- Form Panel    -->
-            <div class="col-lg-6 bg-white">
-                <div class="form d-flex align-items-center">
-                    <div class="content">
-                        @error('password')
-                            <div class="alert alert-danger">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                        <form id="register-form" method="post" action="{{ route('auth.register') }}">
-                            @csrf
-                            <div class="form-group">
-                                <input id="register-nama" type="text" name="registerUsername" required=""
-                                    class="input-material">
-                                <label for="register-nama" class="label-material">Nama</label>
-                            </div>
-                            <div class="form-group">
-                                <input id="register-No" type="text" name="registerNoTlp" required=""
-                                    class="input-material">
-                                <label for="register-No" class="label-material">Nomor Telepon</label>
-                            </div>
-                            <div class="form-group">
-                                <input id="register-Email" type="text" name="registerEmail" required=""
-                                    class="input-material">
-                                <label for="register-Email" class="label-material">Email</label>
-                            </div>
-                            <div class="form-group">
-                                <input id="register-password" type="password" name="registerPassword" required=""
-                                    class="input-material">
-                                <label for="register-password" class="label-material">Password</label>
-                            </div>
-                            <div class="text-center">
-                                <input type="submit" id="regist" class="btn btn-primary" value="Daftar">
-                            </div>
-                        </form>
-                    </div>
+            <!-- Email Address -->
+            <div class="mt-4">
+                <x-label for="email" :value="__('Email')" />
 
-                </div>
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
-        </div>
-    </div>
-</div>
+            <!-- Password -->
+            <div class="mt-4">
+                <x-label for="password" :value="__('Password')" />
 
-<div class="copyrights text-center">
-    <p>HotelTrip &copy; <?php echo date('Y'); ?></p>
-    <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-</div>
-</div>
+                <x-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
+            </div>
 
-    <!-- JavaScript files-->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-    <script src="/vendor/jquery.cookie/jquery.cookie.js"></script>
-    <script src="/vendor/chart.js/Chart.min.js"></script>
-    <script src="/vendor/jquery-validation/jquery.validate.min.js"></script>
+            <!-- Confirm Password -->
+            <div class="mt-4">
+                <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
-    <!-- Main File-->
-    <script src="/js/front.js"></script>
+                <x-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required />
+            </div>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-</body>
-</html>
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-button class="ml-4">
+                    {{ __('Register') }}
+                </x-button>
+            </div>
+        </form>
+    </x-auth-card>
+</x-guest-layout>
