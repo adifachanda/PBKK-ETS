@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id('id');
             $table->foreignId('user_id');
             $table->foreignId('room_id');
-            $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->string('booking_status')->default('payment_pending');
             $table->date('check_in');
