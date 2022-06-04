@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('booking_id')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('booking_id')->references('id')->on('bookings');
-            $table->string('customer_id');
+            $table->string('user_id');
             $table->string('payment_type');
             $table->string('first_name');
             $table->timestamps();
