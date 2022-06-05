@@ -1,1 +1,5 @@
-/* your styles go here */
+.line {
+    background-color: white;
+    height: 1px;
+    width: auto;
+}

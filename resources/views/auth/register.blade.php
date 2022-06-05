@@ -1,7 +1,7 @@
-@extends('blank.blank')
+@extends('Hotel Page.blank')
 
 @section('content')
-<x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
     <div class="page login-page">
         <div class="container d-flex align-items-center">
             <div class="form-holder has-shadow">
@@ -31,13 +31,13 @@
                                         <x-input id="name" class="block mt-1 w-full" type="text" name="name"
                                             :value="old('name')" required autofocus />
                                     </div> --}}
-                                    
+
                                     <div class="form-group">
-                                        <input id="name"  type="name" name="name" required class="input-material">
-                                        <label for="name"  class="label-material">Your Full Name</label>
+                                        <input id="name" type="name" name="name" required class="input-material">
+                                        <label for="name" class="label-material">Your Full Name</label>
                                     </div>
 
-                                    
+
                                     <!-- Email Address -->
                                     {{-- <div class="mt-4">
                                         <x-label for="email" :value="__('Email')" />
@@ -51,9 +51,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input id="email" type="email" name="email"  required class="input-material">
+                                        <input id="email" type="email" name="email" required class="input-material">
                                         <label for="email" class="label-material">Email Address</label>
-                                      </div>
+                                    </div>
                                     <!-- Password -->
                                     {{-- <div class="mt-4">
                                         <x-label for="password" :value="__('Password')" />
@@ -63,9 +63,10 @@
                                     </div> --}}
 
                                     <div class="form-group">
-                                        <input id="password" type="password" name="password" required class="input-material">
+                                        <input id="password" type="password" name="password" required
+                                            class="input-material">
                                         <label for="password" class="label-material">Password</label>
-                                      </div>
+                                    </div>
                                     <!-- Confirm Password -->
                                     {{-- <div class="mt-4">
                                         <x-label for="password_confirmation" :value="__('Confirm Password')" />
@@ -74,30 +75,32 @@
                                             name="password_confirmation" required />
                                     </div> --}}
                                     <div class="form-group">
-                                        <input id="password_confirmation" type="password" name="password_confirmation" required class="input-material">
+                                        <input id="password_confirmation" type="password" name="password_confirmation"
+                                            required class="input-material">
                                         <label for="password_confirmation" class="label-material">Retype Password</label>
                                     </div>
 
-                                    
+
 
                                     {{-- <div class="flex items-center justify-end mt-4">
                                         <a class="underline text-sm text-gray-600 hover:text-gray-900"
                                             href="{{ route('login') }}">
                                             {{ __('Already registered?') }}
                                         </a> --}}
-                                        <x-button class="btn btn-primary">
-                                            {{ __('Register') }}
-                                        </x-button>
-                                        <br>
-                                        <small>Already have an account? </small><a href="{{ route('login')}}" class="signup">Login</a>
-                                    </div>
-                                </form>
-
+                                    <x-button class="btn btn-primary">
+                                        {{ __('Register') }}
+                                    </x-button>
+                                    <br>
+                                    <small>Already have an account? </small><a href="{{ route('login') }}"
+                                        class="signup">Login</a>
                             </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

@@ -22,13 +22,14 @@ class User extends Authenticatable
         'address',
         'photo',
     ];
-    
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->hasMany(booking::class);
     }
 }

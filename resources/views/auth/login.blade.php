@@ -1,4 +1,4 @@
-@extends('blank.blank')
+@extends('Hotel Page.blank')
 @section('content')
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -44,15 +44,14 @@
                                     </div> --}}
 
                                     <div class="form-group">
-                                        <input id="email" type="email" name="email" required
-                                            class="input-material">
+                                        <input id="email" type="email" name="email" required class="input-material">
                                         <label for="email" class="label-material">Email</label>
                                     </div>
                                     <div class="form-group">
                                         <input id="password" type="password" name="password" required=""
                                             class="input-material">
                                         <label for="password" class="label-material">Password</label>
-                                    </div> 
+                                    </div>
 
                                     <!-- Remember Me -->
                                     <div class="block mt-4">

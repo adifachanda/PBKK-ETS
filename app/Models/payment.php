@@ -14,7 +14,8 @@ class payment extends Model
         'payment_type',
         'first_name',
     ];
-    public function booking(){
+    public function booking()
+    {
         return $this->belongsTo(booking::class);
     }
 }

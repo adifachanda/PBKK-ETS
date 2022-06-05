@@ -11,10 +11,12 @@ class room extends Model
     protected $fillable = [
         'room_type_id',
     ];
-    public function room_type(){
+    public function room_type()
+    {
         return $this->belongsTo(room_type::class);
     }
-    public function booking(){
+    public function booking()
+    {
         return $this->hasMany(booking::class);
     }
 }

@@ -22,9 +22,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/blank', function () {
-    return view('blank.blank');
+    return view('Hotel Page.blank');
 });
 Route::get('/register', function () {
     return view('welcome');
 });
-require __DIR__.'/auth.php';
+Route::get('/profile', function () {
+    return view('Hotel Page.profile');
+});
+require __DIR__ . '/auth.php';

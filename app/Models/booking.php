@@ -17,13 +17,16 @@ class booking extends Model
         'booking_status',
         'total_nights'
     ];
-    public function bookingforUser(){
+    public function bookingforUser()
+    {
         return $this->belongsTo(User::class);
     }
-    public function bookingforRoom(){
+    public function bookingforRoom()
+    {
         return $this->belongsToMany(room::class);
     }
-    public function bookingforPayment(){
+    public function bookingforPayment()
+    {
         return $this->hasOne(payment::class);
     }
 }
