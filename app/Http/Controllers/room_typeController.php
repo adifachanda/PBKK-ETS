@@ -37,6 +37,11 @@ class room_typeController extends Controller
      * @param  \App\Models\room_type  $room_type
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // ->except(['index']);
+    }
     public function edit(room_type $room_type)
     {
         //

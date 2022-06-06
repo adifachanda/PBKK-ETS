@@ -44,6 +44,11 @@ class roomController extends Controller
      * @param  \App\Models\room  $room
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // ->except(['index']);
+    }
     public function show(room $room)
     {
         //

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\logoutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,10 +25,15 @@ Route::get('/dashboard', function () {
 Route::get('/blank', function () {
     return view('Hotel Page.blank');
 });
+Route::group(['middleware' => ['auth']], function () {
+    //route that use auth middleware before entering site
+    Route::get('/logout', [logoutController::class, 'perform']);
+    Route::get('/profile', function () {
+        return view('Hotel Page.profile');
+    });
+});
 Route::get('/register', function () {
     return view('welcome');
 });
-Route::get('/profile', function () {
-    return view('Hotel Page.profile');
-});
+
 require __DIR__ . '/auth.php';
